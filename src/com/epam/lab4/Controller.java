@@ -46,6 +46,20 @@ public class Controller {
 
         view.printMessage(View.INPUT_INFO);
 
+        inputMenu(scanner);
+
+        view.printMessage(View.RESULT);
+        view.printMessage(view.toString(model, DELIMITER));
+    }
+
+    // The Utility methods
+    
+    /**
+     * Outputs menu and reads user's input.
+     *
+     * @param scanner Scanner to read from.
+     */
+    private void inputMenu(Scanner scanner) {
         model.setName(inputWithScanner(scanner, View.NAME_INPUT, NAME_PATTERN, false));
         model.setSurname(inputWithScanner(scanner, View.SURNAME_INPUT, NAME_PATTERN, false));
         model.setLogin(inputWithScanner(scanner, View.LOGIN_INPUT, LOGIN_PATTERN, false));
@@ -65,12 +79,7 @@ public class Controller {
         model.setPhoneNumber(inputPhoneWithScanner(scanner, View.PHONE_INPUT + View.OPTIONAL, PHONE_PATTERN, true));
         model.setRegistrationDate(getCurrentDate(DATE_FORMAT));
         model.setAbout(inputWithScanner(scanner, View.ABOUT_INPUT + View.OPTIONAL, WORK_PATTERN, true));
-
-        view.printMessage(View.RESULT);
-        view.printMessage(view.toString(model, DELIMITER));
     }
-
-    // The Utility methods
 
     /**
      * Reads and validates user's input, depending on the given pattern.
